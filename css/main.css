@@ -1,0 +1,798 @@
+	*{margin:0;padding: 0;}
+	.enter{/* 直接进入购物中心 */
+		width: 100px;
+		height: 100px;
+		display:block;
+		border-radius: 50%;
+		position:fixed;
+		top: 25px;
+		right: 20px;
+		z-index: 10;
+	}
+	.next{/* 继续往下更多精彩 */
+		width: 174px;
+		height: 61px;
+		display:block;
+		z-index: 10;
+		position: fixed;
+		right: 59px;
+		bottom: 90px;
+		background:url(../imgs/00-more.png) no-repeat;
+		animation: nextJump 1s linear infinite alternate;
+		-webkit-animation: nextJump 0.8s linear infinite alternate;
+	}
+	.sec_body{
+		width: 900px;
+		height: 600px;
+		position: absolute;
+		left: 50%;
+		/*transform: translateX(-50%);*/
+		margin-left: -450px;
+		bottom: 0;
+		/*border: 2px solid red;*/
+	}
+	/* 第一屏样式 */
+	.screen01{
+		background: url(../imgs/01-bg.png) no-repeat bottom center;
+		position: relative;
+		/*z-index: 10;*/
+
+	}
+	.screen01 .flag{/* 旗帜（千百汇线上一站式购物网站） */
+		width: 470px;
+		height: 50px;
+		position: absolute;
+		top: 0;
+		right: -50px;
+		background: url(../imgs/01-fly.png) no-repeat bottom center;
+		animation: flagJump 1s linear infinite alternate;
+	}
+	.screen01 .sec01_bg{
+		position: absolute;
+		right: 40px;
+		bottom: 115px;
+	}
+	.screen01 .sec01_sofa{
+		position: absolute;
+		left: 230px;
+		top: 140px;
+		animation: sec01_sofaJump 0.9s linear infinite alternate;
+	}
+	/* 第一屏动画 */
+	@keyframes nextJump{
+		form{
+			bottom: 90px;
+		}
+		to{
+			bottom: 20px;
+		}
+	}
+	@keyframes flagJump{
+		from{
+			top: 0;
+		}
+		to{
+			top: 70px;
+		}
+	}
+	@keyframes sec01_sofaJump{
+		from{
+			top: 140px;
+		}
+		to{
+			top:155px;
+		}
+	}
+
+	/* 第二屏样式 */
+	.screen02{
+		background: url(../imgs/02-bg.png) no-repeat bottom center;
+		/*z-index: 9;*/
+		
+	}
+	.screen02 .sec_body{
+		position: absolute;
+	}
+	.screen02 .topText{
+		width: 363px;
+		height: 27px;
+		position: absolute;
+		top:0;
+		left:50%;
+		transform:translateX(-50%);
+		/*border:1px solid yellow;*/
+		background-image: url(../imgs/02-text02.png);
+		transition:background-image 1s linear;/* 添加文字淡入淡出的效果(原来的黑色字变为白色字) */
+	}
+	.screen02.now .topText{
+		background-image: url(../imgs/02-text2.png);
+	}
+	.screen02 .search{
+		width: 222px;
+		height: 45px;
+		background: url(../imgs/02-search.png) no-repeat;
+		position: absolute;
+		top:250px;
+		right:-460px;
+	}
+	/* 动画：搜索框，(1)左移(2)停留一秒(3)向右上角移  */
+	.screen02.now .search{
+		animation: searchMove 3s forwards;
+	}
+	@keyframes searchMove{
+		0%{}
+		30%{
+			transform: translate(-900px,0px);/* 搜索框左移 */
+		}
+		60%{
+			transform: translate(-900px,0px);/* 让搜索框固定1s */
+		}
+		100%{
+			transform: translate(-600px,-135px) scale(0.7);/* 搜索框向右上角移动，并且缩小 */
+		}
+	}
+
+	.screen02 .search img{/* 文字（沙发） */
+		background: url(../imgs/02-key.png) no-repeat;
+		position: absolute;
+		top:4px;
+		right:50px;
+		opacity: 0;
+	}
+
+	/* 动画：文字（沙发），从无到有  */
+	.screen02.now .search img{
+		opacity: 1;
+		transition: all 1s linear 1s;
+	}
+
+	
+	.screen02 .sofaList{
+		width: 440px;
+		height: 218px;
+		background:url(../imgs/02-goods.png) no-repeat;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: scale(0);
+		transform-origin: right bottom 0; 
+		left: 230px;
+		top: 170px;
+	}
+	/* 动画：沙发列表，从无到有，从小到大 */
+	.screen02.now .sofaList{
+
+		animation: slMove 1s linear 3s forwards;
+	}
+	@keyframes slMove{
+		from{
+			transform:  scale(0); ;
+		}
+		to{
+			transform: scale(1);
+		}
+	}
+
+
+
+	.screen02 .sofa2 {
+		width: 207px;
+		height: 166px;
+		position: absolute;
+		background:url(../imgs/02-sofa.png) no-repeat;
+
+		top: 135px;
+		left: 290px;
+		z-index: 1000;
+		opacity: 0;
+		transform: scale(0);
+	}
+
+	/* 动画：沙发，掉落  */
+	.screen02.leave .sofa2 {
+		animation: soft02Drop 1s linear ;
+		-webkit-animation: soft02Drop 1s linear ;
+	}
+	@keyframes soft02Drop{
+		from{
+			opacity: 1;
+			transform: translate(0px,10px) scale(1);
+		}
+		to{
+			opacity: 1;
+			transform: translate(-80px,660px);
+		}
+	}
+	/* 第二屏动画 */
+		/* 1.搜索框动画 */
+	
+	/* 第三屏样式 */
+	.screen03 .sec_body{
+		background: url(../imgs/03-bg.png) no-repeat center;
+		/*z-index: 8;*/
+	}
+	.screen03 .sofa3{
+		width: 207px;
+		height: 166px;
+		background: url(../imgs/02-sofa.png) no-repeat center;
+		position: absolute;
+		top: 180px;
+		left: 212px;
+		opacity: 0;
+		z-index: 1000;
+	}
+	/* 动画：沙发，倾斜再掉落  */
+	.screen03.leave .sofa3{
+		animation: sofa3Drop 1s linear ;/*forwards sxx */
+	}
+	@keyframes sofa3Drop{
+		from{}
+		to{
+			transform: translate(200px,680px) rotate(30deg);
+		}
+	}
+	.screen03 .prop{
+		width: 296px;
+		height: 131px;
+		background: url(../imgs/03-change01.gif) no-repeat center;
+		position: absolute;
+		top: 295px;
+		right: 115px;
+	}
+	/* 动画：图片沙发参数（颜色，大小），更换图片  */
+	.screen03.now .prop{
+		background:url(../imgs/03-change02.gif) no-repeat center;
+		transition: background 1.5s linear;
+	}
+	.screen03 .buy{
+		width: 218px;
+		height: 58px;
+		background: url(../imgs/03-cart01.gif) no-repeat center;
+		position: absolute;
+		bottom: 102px;
+		right: 193px;
+	}
+	/* 动画：购买按钮，更换按钮图片  */
+	.screen03.now .buy{
+		background: url(../imgs/03-cart02.gif) no-repeat center;
+		transition: background 1.5s linear;
+	}
+	/* 第三屏动画 */
+
+	/* 第四屏样式 */
+	.screen04{
+		background:url(../imgs/04-bg.png) no-repeat bottom center;
+		/*z-index: 7;*/
+	}
+	.screen04 .cloud{
+		width: 100%;
+		height: 140px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		animation: cloudMove 6s linear infinite alternate;
+	}
+	@keyframes  cloudMove{
+		from{
+			transform: translate(-300px,0)
+		}
+		to{
+			transform: translate(300px,0)
+
+		}
+	}
+
+	.screen04 .cloud img:first-child{
+		position: absolute;
+		top: 20px;
+		left: 300px;
+	}
+	.screen04 .cloud img:last-child{
+		width: 100%;
+	}
+	.screen04 .text4{
+		width: 429px;
+		height: 32px;
+		margin: 105px auto;
+		background:url(../imgs/04-text01.png) no-repeat;
+
+	}
+	/* 动画：文字，更改文字  */
+	.screen04.show .text4{
+		background:url(../imgs/04-text02.png) no-repeat;
+		transition: background 1s linear;
+	}
+	.screen04 .pc{
+		width: 283px;
+		height: 270px;
+		position: absolute;
+		left: 50%;
+		bottom: 155px;
+		transform: translateX(-50%);
+		background:url(../imgs/04-address01.png) no-repeat;
+		opacity: 0;
+	}
+	/* 动画：电脑，显示电脑  */
+	.screen04.show .pc{
+		opacity: 1;
+		transition:opacity 1s linear;
+	}
+	.screen04 .pc img{
+		margin: 60px auto;
+		display: block;
+		opacity: 0;
+	}
+	/* 动画：电脑内的地址，显示  */
+	.screen04.show .pc img{
+		opacity: 1;
+		transition:opacity 1s linear 1s;
+	}
+	.screen04 .cart{
+		width: 407px;
+		height: 346px;
+		/*border: 1px solid yellow;*/
+		background:url(../imgs/04-cart.png) no-repeat;
+		position: absolute;
+		left: 50%;
+		bottom: 40px;
+		transform: translateX(-50%);
+		/*margin-left: -203px;*/
+		z-index: 1004;
+
+	}
+	.screen04 .sofa4{
+		width: 204px;
+		height: 198px;
+		background:url(../imgs/04-sofa.png) no-repeat;
+		position: absolute;
+		right: 265px;
+		bottom: 195px;
+		opacity: 0;
+	}
+	/* 动画：购物车,移动  */
+	.go{
+		animation: cartGo 1s linear forwards;
+	}
+	@keyframes cartGo{
+		from{
+			transform: translate(0px,360px);
+		}
+		to{
+			transform: translate(900px,360px);
+		}
+	}
+
+	/* 第五屏样式 */
+	.screen05{
+		background:url(../imgs/05-bg.png) no-repeat center;
+		/*z-index:6;*/
+	}
+	.screen05 .text{
+		width: 540px;
+		height: 56px;
+		background:url(../imgs/05-text.png) no-repeat center;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.screen05 .cards{
+		width: 358px;
+		height: 220px;
+		background:url(../imgs/05-card.png) no-repeat;
+		position: absolute;
+		left: 0;
+		top: 150px;
+		z-index: 10;
+	}
+	.screen05 .paper{
+		width: 139px;
+		height: 130px;
+		background:url(../imgs/05-order.png) no-repeat;
+		position: absolute;
+		left: 117px;
+		top: 152px;
+		z-index: 0;
+	}
+	/* 动画3-2：纸，上移  */
+	.paperUp{
+		animation: paper5Up 1s forwards 0.5s;
+	}
+	@keyframes paper5Up{
+		from{}
+		to{
+			transform: translateY(-86px);
+		}
+	}
+
+	.screen05 .sofa5{
+		width: 204px;
+		height: 198px;
+		background:url(../imgs/04-sofa.png) no-repeat;
+		position: absolute;
+		left: 87px;
+		top: -220px;
+		z-index: 9;
+		opacity: 0;
+	}
+	.screen05.now .sofa5{
+
+		opacity: 1;
+	}
+	/* 动画3-1：沙发，掉落  */
+	.dropdown5{
+		animation: soft5Drop 1s forwards;
+	}
+	@keyframes soft5Drop{
+		from{
+		}
+		to{
+			transform:translateY(530px) rotate(10deg);
+		}
+	}
+	/* 动画4：到下一页的时候，沙发，掉落  1.5s*/
+	.screen05.leave .sofa5{
+		animation: soft6Drop 2s linear forwards;/* 2.5       1060px*/
+	}
+	@keyframes soft6Drop{
+		0%{
+			transform: translateY(530px);
+		}
+		50%{
+			transform: translateY(1100px) scale(0.3);
+		}
+		100%{
+			transform: translateY(1100px) scale(0);
+		}
+	}
+	.screen05 .boxHand{
+		width:400px;
+		height:650px;
+		position:absolute;
+		bottom:0;
+		right:0px;
+		overflow:hidden;
+	}
+	.screen05 .hand{
+		width: 170px;
+		height: 610px;
+		background:url(../imgs/05-hand.png) no-repeat;
+		position: absolute;
+		right: 48px;
+		top: 650px;
+		z-index: 10;
+	}
+	/* 动画1：手，上移  */
+	.screen05.now .hand{
+		top: 280px;
+		transition: top 0.5s linear;
+	}
+	.screen05 .mouse{
+		width: 205px;
+		height: 420px;
+		position: absolute;
+		right: 0;
+		top: -60px;
+		z-index: 0;
+		overflow: hidden;
+	}
+	.screen05 .mouse img:first-child{
+		position: absolute;
+		top: -400px;
+		clip: rect(407px,205px,819px,0px);
+	}
+	.screen05 .mouse img:last-child{
+		position: absolute;
+		top: -400px;
+		clip: rect(407px,205px,819px,0px);
+		opacity: 0;
+	}
+	
+	/* 动画2：鼠标，点击  */
+	.screen05.now .mouse img:last-child{
+		/*background:url(../imgs/05-mouse02.png) no-repeat;*/
+		opacity: 1;
+		transition: opacity 0.2s linear 1s;		
+	}
+
+	/* 第六屏样式 */
+	.screen06{
+		background: #84d9ed url(../imgs/06-bg.png) no-repeat bottom;
+		background-position-x:-280px;
+		/*z-index: 5;*/
+	}
+
+	.screen06 .cloud6{
+		width: 100%;
+		height: 140px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		animation: cloudMove6 6s linear infinite alternate;
+	}
+	.screen06 .cloud6 img:first-child{
+	 	display: block;
+		position: absolute;
+		top: -40px;
+		left: -120px; 
+	}
+	.screen06 .cloud6 img:last-child{
+	 	display: block;
+		position: absolute;
+		left: 100px; 
+	}
+	.screen06 .text6{
+		width: 308px;
+		height: 59px;
+		background: url(../imgs/06-text01.png) no-repeat;
+		position: absolute;
+		left: 122px;
+		top:85px;
+	}
+	.screen06 .text6 .text62{
+		position: absolute;
+		top: 0;
+		opacity: 0;
+	}
+	.screen06 .car{
+		width: 221px;
+		height: 122px;
+		background: url(../imgs/06-car.png) no-repeat;
+		position: absolute;
+		left: 100px;
+		bottom:0px;
+		z-index: 11;
+	}
+	.screen06 .car .address6{
+		width: 93px;
+		height: 56px;
+		position: absolute;
+		right: -33px;
+		top: -48px;
+		opacity: 0;
+	}
+	.screen06 .address6 .buyer{
+		position: absolute;
+		top: 0;
+		z-index: -1;
+	}
+	.screen06 .box{
+		width: 123px;
+		height: 85px;
+		background: url(../imgs/06-box.png) no-repeat;
+		position: absolute;
+		left: -358px;
+		top: 250px;
+		z-index: 10;
+	}
+	/* 6-动画1：盒子，右移  */
+	.screen06.now .box{
+		left: 125px;
+		transition: left 0.3s linear;
+	}
+	
+	/* 6-动画2：盒子，掉落,变小 sxx 1 */
+	.boxDown{
+		-webkit-animation:bd 1s linear 1s forwards;
+	}
+	@keyframes bd{
+		from{
+			transform: translateY(0px) scale(1);
+		}
+		to{
+			transform: translateY(350px) scale(0);
+		}
+	}
+	
+	.screen06 .man{
+		width: 252px;
+		height: 305px;
+		background: url(../imgs/06-worker.png) no-repeat;
+		position: absolute;
+		left: 100px;
+		bottom: 0px;
+		transform: scale(0);
+		transform-origin:left bottom;
+		z-index:12;
+	}
+	.screen06 .sure{
+		width: 139px;
+		height: 173px;
+		background: url(../imgs/06-say.png) no-repeat;
+		position: absolute;
+		right: 300px;
+		top: 72px;
+		opacity: 0;
+	}
+	.screen06 .door{
+		width: 106px;
+		height: 150px;
+		background: url(../imgs/06-door.png) no-repeat;
+		position: absolute;
+		right: 52px;
+		bottom: 114px;
+		opacity: 0;
+	}
+	.screen06 .woman{
+		width: 87px;
+		height: 294px;
+		background: url(../imgs/06-person.png) no-repeat;
+		position: absolute;
+		right: 0px;
+		bottom: 110px;
+		transform: scale(0);
+		transform-origin: bottom left;
+	}
+	/* 6-动画3-1：第六屏背景（开车），右移  */
+	.screen06.drive{
+		background-position-x: -1132px;
+		transition:background-position-x 1s linear;
+	}
+	/* 6-动画3-2：地址1（发货地），显示  */
+	.screen06.drive .address6{
+		opacity: 1;
+		transition: opacity 0.1s linear 0.2s;
+	}
+	/* 6-动画3-3：地址2（收货地），显示  */
+	.screen06.drive .buyer{
+		z-index: 1;
+		transition: z-index 0.1s linear 1.2s;
+	}
+	/* 6-动画4：送货人，从小变大，向右上角移动   */
+	.screen06 .man.deliver{
+		transform-origin: bottom left; 
+		animation: manDeliver 3s linear forwards;
+	}
+	@keyframes manDeliver{
+		0%{}
+		20%{
+			transform: scale(1);
+		}
+		40%{
+			transform: scale(1);
+		}
+		60%{
+			transform: translateY(-100px) scale(1);
+		}
+		80%{
+			transform: translateY(-100px) scale(1);
+		}
+		100%{
+			transform: translate(200px,-100px) scale(1);
+		}
+	}
+	/* 6-动画5：显示“请收货”  */
+	.screen06 .sure.show{
+		opacity: 1;
+		transition: opacity 0.2s linear;
+	}
+	/* 6-动画6：更改文字  */
+	.screen06 .text61.show{
+		opacity: 0;
+		transition: opacity 0.2s linear;
+	}
+	.screen06 .text62.show{
+		opacity: 1;
+		transition: opacity 0.2s linear 0.2s;
+	}
+	/* 6-动画7：门，打开  */
+	.screen06 .door.show{
+		opacity: 1;
+		transition: opacity 0.2s linear 0.4s;
+	}
+	/* 6-动画8：女人，由小变大，左移  */
+	.screen06 .woman.show{
+		/*transform: scale(1) translateX(px);*/
+		animation: womanGo 2s linear 0.6s forwards;
+	}
+	@keyframes womanGo{
+		0%{}
+		33%{
+			transform: scale(1);
+		}
+		66%{
+			transform: translateX(-200px) scale(1);
+		}
+		100%{
+			transform: translateX(-200px) scale(1);
+		}
+	}
+
+	/* 第七屏样式 */
+	.screen07{
+		background:url(../imgs/07-bg.png) no-repeat bottom left;
+		background-position-x: -316px;
+	}
+	.screen07 .starList{
+		width: 110px;
+		height: 13px;
+		/*border: 1px solid;*/
+		position: absolute;
+		top: 139px;
+		left: 156px;
+	}
+	.screen07 .starList img{
+		opacity: 0;
+	}
+	.screen07 .starList img:nth-child(2){
+		margin-left: 1px;
+	}
+	.screen07 .starList img:nth-child(3){
+		margin-left: 2px;
+	}
+	.screen07 .starList img:nth-child(4){
+		margin-left: 1px;
+	}
+	.screen07 .starList img:nth-child(5){
+		margin-left: 2px;
+	}
+	.screen07 .praise{
+		width: 72px;
+		height: 40px;
+		background:url(../imgs/07-text.png) no-repeat bottom left;
+		position: absolute;
+		top: 180px;
+		left: 150px;
+		opacity: 0;
+	}
+
+	.screen07.now .starList img:nth-child(1){
+		opacity: 1;
+		transition: opacity 0.5s linear;
+	}
+	.screen07.now .starList img:nth-child(2){
+		opacity: 1;
+		transition: opacity 0.5s linear 0.5s;
+	}
+	.screen07.now .starList img:nth-child(3){
+		opacity: 1;
+		transition: opacity 0.5s linear 1s;
+	}
+	.screen07.now .starList img:nth-child(4){
+		opacity: 1;
+		transition: opacity 0.5s linear 1.5s;
+	}
+	.screen07.now .starList img:nth-child(5){
+		opacity: 1;
+		transition: opacity 0.5s linear 2s;
+	}
+	
+	.screen07.now .praise{
+		opacity: 1;
+		transition: opacity 0.5s linear 2.5s;
+	}
+
+
+
+
+	.screen08{
+		background:url(../imgs/08-bg.png) ;
+	}
+	.screen08 .btnShop{
+		width: 389px;
+		height: 160px;
+		background:url(../imgs/08-btn01.png) no-repeat;
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.screen08 .btnShop:hover{
+		background:url(../imgs/08-btn02.gif) no-repeat;
+	}
+	.screen08 .btnAgain{
+		width: 105px;
+		height: 34px;
+		background:url(../imgs/08-again.png) no-repeat;
+		position: absolute;
+		top: 85px;
+		right: 0px;
+	}
+	.screen08 .hand8{
+		width: 170px;
+		height: 449px;
+		background:url(../imgs/08-hand.png) no-repeat;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 100px;
+	}
