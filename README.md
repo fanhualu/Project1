@@ -3,4 +3,4 @@
 ## 支持的浏览器
 谷歌
 ## 项目部分截图
-![image](http://github.com/fanhualu/Project1/project1.png)
+![image](https://github.com/fanhualu/Project1/blob/master/project1.png)
